@@ -5,7 +5,7 @@ describe DockingStation do
   let(:docking_station) { DockingStation.new }
   let(:bike) { Bike.new }
 
-  context '#release_bike' do
+  describe '#release_bike' do
     it 'recognises this message' do
       expect(docking_station).to respond_to(:release_bike)
     end
@@ -22,7 +22,7 @@ describe DockingStation do
     end
   end
 
-  context '#dock' do
+  describe '#dock' do
     it 'recognises this message' do
       expect(docking_station).to respond_to(:dock).with(1).argument
     end

@@ -1,7 +1,9 @@
 require 'bike'
+
 describe Bike do
   let(:bike) { Bike.new }
-  context '#working?' do
+
+  describe '#working?' do
     it 'recognises this message' do
       expect(bike).to respond_to(:working?)
     end
@@ -9,5 +11,4 @@ describe Bike do
       expect(bike).to be_working
     end
   end
-
 end
