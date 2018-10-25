@@ -9,8 +9,16 @@ describe DockingStation do
     it 'recognises this message' do
       expect(docking_station).to respond_to(:release_bike)
     end
-    it 'releases a bike' do
-      expect(docking_station.release_bike).to be_a(Bike)
+    context 'when there are bikes docked' do
+      it 'releases a bike' do
+        docking_station.dock(bike)
+        expect(docking_station.release_bike).to be_a(Bike)
+      end
+    end
+    context 'when empty' do
+      it 'does not release a bike' do
+        expect { docking_station.release_bike }.to raise_error(RuntimeError, "This docking station is empty.")
+      end
     end
   end
 
