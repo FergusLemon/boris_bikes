@@ -1,5 +1,6 @@
 class DockingStation
   attr_reader :bikes
+  MAX_CAPACITY = 20
 
   def initialize
     @bikes = []
@@ -18,10 +19,10 @@ class DockingStation
   private
 
   def full?
-    @bikes.size == 20
+    @bikes.size == MAX_CAPACITY
   end
 
   def empty?
-    @bikes.size == 0
+    @bikes.empty?
   end
 end
