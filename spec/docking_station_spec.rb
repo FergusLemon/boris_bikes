@@ -4,6 +4,7 @@ require 'bike'
 describe DockingStation do
   let(:docking_station) { DockingStation.new }
   let(:bike) { Bike.new }
+  MAX_CAPACITY = 20
 
   describe '#release_bike' do
     it 'recognises this message' do
@@ -32,8 +33,7 @@ describe DockingStation do
         expect(docking_station.bikes).to include(bike)
       end
       it 'has a maximum capacity of 20' do
-        19.times { docking_station.dock(bike) }
-        expect { docking_station.dock(bike) }.not_to raise_error
+        expect { MAX_CAPACITY.times { docking_station.dock(bike) } }.not_to raise_error
       end
     end
   end
