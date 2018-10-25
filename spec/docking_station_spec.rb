@@ -26,10 +26,14 @@ describe DockingStation do
     it 'recognises this message' do
       expect(docking_station).to respond_to(:dock).with(1).argument
     end
-    context '1 bike has been docked' do
+    context 'when one bike has been docked' do
       it 'has the bike in its dock' do
         docking_station.dock(bike)
         expect(docking_station.bikes).to include(bike)
+      end
+      it 'has a maximum capacity of 20' do
+        19.times { docking_station.dock(bike) }
+        expect { docking_station.dock(bike) }.not_to raise_error
       end
     end
   end
