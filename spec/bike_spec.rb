@@ -3,17 +3,17 @@ require 'bike'
 describe Bike do
   let(:bike) { Bike.new }
 
-  describe '#working?' do
+  describe '#broken?' do
     it 'recognises this message' do
-      expect(bike).to respond_to(:working?)
+      expect(bike).to respond_to(:broken?)
     end
-    it 'responds "true" when it is working' do
-      expect(bike).to be_working
+    it 'responds "false" when it is working' do
+      expect(bike).to_not be_broken
     end
     context 'when broken' do
-      it 'responds "false"' do
-        bike.broken = true
-        expect(bike).to_not be_working
+      it 'responds "true"' do
+        bike.report_broken
+        expect(bike).to be_broken
       end
     end
   end

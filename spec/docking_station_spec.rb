@@ -29,14 +29,14 @@ describe DockingStation do
     context 'when there are bikes docked' do
       before(:each) do
         docking_station.dock(bike)
-        broken_bike.broken = true
+        broken_bike.report_broken
       end
       it 'releases a bike' do
         expect(docking_station.release_bike).to be_a(Bike)
       end
       it 'releases a working bike' do
         released_bike = docking_station.release_bike
-        expect(released_bike).to be_working
+        expect(released_bike).to_not be_broken
       end
       it 'does not release a broken bike' do
         docking_station.dock(broken_bike)
