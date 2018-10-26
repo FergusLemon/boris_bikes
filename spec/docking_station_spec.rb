@@ -4,8 +4,8 @@ require 'bike'
 describe DockingStation do
   DEFAULT_CAPACITY = 20
   LARGER_CAPACITY = 25
-  let(:docking_station) { DockingStation.new }
-  let(:larger_docking_station) { DockingStation.new(LARGER_CAPACITY) }
+  let(:docking_station) { described_class.new }
+  let(:larger_docking_station) { described_class.new(LARGER_CAPACITY) }
   let(:bike) { Bike.new }
   let(:broken_bike) { Bike.new }
 
