@@ -3,13 +3,20 @@ require 'bike'
 
 describe DockingStation do
   DEFAULT_CAPACITY = 20
+  LARGER_CAPACITY = 25
   let(:docking_station) { DockingStation.new }
+  let(:larger_docking_station) { DockingStation.new(LARGER_CAPACITY) }
   let(:bike) { Bike.new }
 
   describe '#initialize' do
     context 'when no capacity is given' do
       it 'defaults to a capacity of twenty' do
         expect(docking_station.capacity).to eq(DEFAULT_CAPACITY)
+      end
+    end
+    context 'when a capacity is given' do
+      it 'overrides the default capacity' do
+        expect(larger_docking_station.capacity).to eq(LARGER_CAPACITY)
       end
     end
   end
@@ -40,7 +47,7 @@ describe DockingStation do
         docking_station.dock(bike)
         expect(docking_station.bikes).to include(bike)
       end
-      it 'has a maximum capacity of 20' do
+      it 'has a default capacity of twenty' do
         expect { DEFAULT_CAPACITY.times { docking_station.dock(bike) } }.not_to raise_error
       end
     end
