@@ -2,9 +2,17 @@ require 'docking_station'
 require 'bike'
 
 describe DockingStation do
+  DEFAULT_CAPACITY = 20
   let(:docking_station) { DockingStation.new }
   let(:bike) { Bike.new }
-  MAX_CAPACITY = 20
+
+  describe '#initialize' do
+    context 'when no capacity is given' do
+      it 'defaults to a capacity of twenty' do
+        expect(docking_station.capacity).to eq(DEFAULT_CAPACITY)
+      end
+    end
+  end
 
   describe '#release_bike' do
     it 'recognises this message' do
@@ -33,7 +41,7 @@ describe DockingStation do
         expect(docking_station.bikes).to include(bike)
       end
       it 'has a maximum capacity of 20' do
-        expect { MAX_CAPACITY.times { docking_station.dock(bike) } }.not_to raise_error
+        expect { DEFAULT_CAPACITY.times { docking_station.dock(bike) } }.not_to raise_error
       end
     end
   end
