@@ -14,16 +14,16 @@ class DockingStation
 
   def dock(bike)
     raise "This docking station is full." if full?
-    @bikes << bike
+    bikes << bike
   end
 
   private
 
   def full?
-    @bikes.size == @capacity
+    bikes.size == capacity
   end
 
   def empty?
-    @bikes.empty?
+    bikes.empty?
   end
 end
