@@ -10,5 +10,11 @@ describe Bike do
     it 'responds "true" when it is working' do
       expect(bike).to be_working
     end
+    context 'when broken' do
+      it 'responds "false"' do
+        bike.broken = true
+        expect(bike).to_not be_working
+      end
+    end
   end
 end
