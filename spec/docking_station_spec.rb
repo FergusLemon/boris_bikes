@@ -7,6 +7,7 @@ describe DockingStation do
   let(:docking_station) { DockingStation.new }
   let(:larger_docking_station) { DockingStation.new(LARGER_CAPACITY) }
   let(:bike) { Bike.new }
+  let(:broken_bike) { Bike.new }
 
   describe '#initialize' do
     context 'when no capacity is given' do
@@ -26,9 +27,20 @@ describe DockingStation do
       expect(docking_station).to respond_to(:release_bike)
     end
     context 'when there are bikes docked' do
-      it 'releases a bike' do
+      before(:each) do
         docking_station.dock(bike)
+        broken_bike.broken = true
+      end
+      it 'releases a bike' do
         expect(docking_station.release_bike).to be_a(Bike)
+      end
+      it 'releases a working bike' do
+        released_bike = docking_station.release_bike
+        expect(released_bike).to be_working
+      end
+      it 'does not release a broken bike' do
+        docking_station.dock(broken_bike)
+        expect { docking_station.release_bike }.to raise_error(RuntimeError, "This bike is broken.")
       end
     end
     context 'when empty' do
