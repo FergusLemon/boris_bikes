@@ -6,6 +6,6 @@ attr_accessor :broken
   end
 
   def working?
-    true unless broken
+    broken ? false : true
   end
 end
