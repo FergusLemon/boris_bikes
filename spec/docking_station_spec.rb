@@ -28,8 +28,8 @@ describe DockingStation do
     end
     context 'when there are bikes docked' do
       before(:each) do
-        bike = double("bike")
-        broken_bike = double("bike")
+        bike = double
+        broken_bike = double
         docking_station.dock(bike)
         broken_bike.report_broken
       end
@@ -58,25 +58,22 @@ describe DockingStation do
     end
     context 'when one bike has been docked' do
       it 'has the bike in its dock' do
-        bike = double("bike")
+        bike = double
         docking_station.dock(bike)
         expect(docking_station.bikes).to include(bike)
       end
     end
     context 'when default capacity is used' do
       it 'has a capacity of twenty' do
-        bike = double("bike")
-        expect { DEFAULT_CAPACITY.times { docking_station.dock(bike) } }.not_to raise_error
+        expect { DEFAULT_CAPACITY.times { docking_station.dock(double(:bike)) } }.not_to raise_error
       end
       it 'does not accept bikes when full' do
-        bike = double("bike")
-        expect { LARGER_CAPACITY.times { docking_station.dock(bike) } }.to raise_error(RuntimeError, "This docking station is full.")
+        expect { LARGER_CAPACITY.times { docking_station.dock(double(:bike)) } }.to raise_error(RuntimeError, "This docking station is full.")
       end
     end
     context 'when a user defined capacity is used' do
       it 'overrides the defualt capacity' do
-        bike = double("bike")
-        expect { LARGER_CAPACITY.times { larger_docking_station.dock(bike) } }.not_to raise_error
+        expect { LARGER_CAPACITY.times { larger_docking_station.dock(double(:bike)) } }.not_to raise_error
       end
     end
   end
