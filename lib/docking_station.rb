@@ -9,6 +9,7 @@ class DockingStation
 
   def release_bike
     raise "This docking station is empty." if empty?
+    raise "This bike is broken." if bike_broken?
     bikes.pop
   end
 
@@ -25,5 +26,9 @@ class DockingStation
 
   def empty?
     bikes.empty?
+  end
+
+  def bike_broken?
+    bikes.last.broken
   end
 end
