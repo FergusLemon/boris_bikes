@@ -6,8 +6,8 @@ describe DockingStation do
   LARGER_CAPACITY = 25
   let(:docking_station) { described_class.new }
   let(:larger_docking_station) { described_class.new(LARGER_CAPACITY) }
-  let(:bike) { double :bike }
-  let(:broken_bike) { double :bike }
+  let(:bike) { double("bike", :broken => false, :broken? => false) }
+  let(:broken_bike) { double("broken bike", :report_broken => true, :broken => true) }
 
   describe '#initialize' do
     context 'when no capacity is given' do
@@ -30,9 +30,6 @@ describe DockingStation do
       before(:each) do
         docking_station.dock(bike)
         broken_bike.report_broken
-      end
-      it 'releases a bike' do
-        expect(docking_station.release_bike).to be_a(Bike)
       end
       it 'releases a working bike' do
         released_bike = docking_station.release_bike
