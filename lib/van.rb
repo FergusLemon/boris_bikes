@@ -1,6 +1,6 @@
 class Van
 
-  def take_broken_bikes
+  def collect_bikes(location)
 
   end
 end

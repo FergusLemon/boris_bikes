@@ -3,9 +3,9 @@ require 'van'
 describe Van do
   let(:van) { described_class.new }
 
-  describe '#take_broken_bikes' do
+  describe '#collect_bikes' do
     it 'recognises this message' do
-      expect(van).to respond_to(:take_broken_bikes)
+      expect(van).to respond_to(:collect_bikes).with(1).argument
     end
   end
 end
