@@ -47,8 +47,18 @@ describe DockingStation do
         docking_station.dock(bike)
         expect(docking_station.bikes).to include(bike)
       end
-      it 'has a default capacity of twenty' do
+    end
+    context 'when default capacity is used' do
+      it 'has a capacity of twenty' do
         expect { DEFAULT_CAPACITY.times { docking_station.dock(bike) } }.not_to raise_error
+      end
+      it 'does not accept bikes when full' do
+        expect { LARGER_CAPACITY.times { docking_station.dock(bike) } }.to raise_error(RuntimeError, "This docking station is full.")
+      end
+    end
+    context 'when a user defined capacity is used' do
+      it 'overrides the defualt capacity' do
+        expect { LARGER_CAPACITY.times { larger_docking_station.dock(bike) } }.not_to raise_error
       end
     end
   end
