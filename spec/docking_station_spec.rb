@@ -6,8 +6,8 @@ describe DockingStation do
   LARGER_CAPACITY = 25
   let(:docking_station) { described_class.new }
   let(:larger_docking_station) { described_class.new(LARGER_CAPACITY) }
-  let(:bike) { double("bike", :broken => false, :broken? => false) }
-  let(:broken_bike) { double("broken bike", :report_broken => true, :broken => true) }
+  let(:bike) { double("bike", broken: false, broken?: false) }
+  let(:broken_bike) { double("broken bike", report_broken: true, broken: true) }
 
   describe '#initialize' do
     context 'when no capacity is given' do
