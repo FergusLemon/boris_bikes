@@ -71,4 +71,10 @@ describe DockingStation do
       end
     end
   end
+
+  describe '#handover_bikes' do
+    it 'recognises this message' do
+      expect(docking_station).to respond_to(:handover_bikes)
+    end
+  end
 end

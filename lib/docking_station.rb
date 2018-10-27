@@ -18,6 +18,10 @@ class DockingStation
     bikes << bike
   end
 
+  def handover_bikes
+
+  end
+
   private
 
   def full?
