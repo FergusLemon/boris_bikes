@@ -19,7 +19,14 @@ class DockingStation
   end
 
   def handover_bikes
-    bikes.select { |bike| bike.broken  }
+    to_return = []
+    bikes.each do |bike|
+      if bike.broken == true
+        to_return << bike
+        bikes.delete(bike)
+      end
+    end
+    to_return
   end
 
   private

@@ -80,5 +80,13 @@ describe DockingStation do
       docking_station.dock(broken_bike)
       expect(docking_station.handover_bikes).to eq([broken_bike])
     end
+    context 'when a broken bike has been handed over' do
+      it 'no longer has the broken bike docked' do
+        docking_station.dock(bike)
+        docking_station.dock(broken_bike)
+        docking_station.handover_bikes
+        expect(docking_station.bikes).not_to include(broken_bike)
+      end
+    end
   end
 end
