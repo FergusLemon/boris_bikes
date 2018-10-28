@@ -3,7 +3,8 @@ require 'van'
 describe Van do
   let(:van) { described_class.new }
   let(:broken_bike) { double :bike }
-  let(:location) { double("docking station", handover_bikes: [broken_bike]) }
+  let(:docking_station) { double("docking station", handover_bikes: [broken_bike]) }
+  let(:garage) { double :garage }
 
   describe '#collect_bikes' do
     it 'recognises this message' do
@@ -11,7 +12,7 @@ describe Van do
     end
     context 'when there are bikes to collect' do
       it 'collects the bikes' do
-        van.collect_bikes(location)
+        van.collect_bikes(docking_station)
         expect(van.bikes).to eq([[broken_bike]])
       end
     end
