@@ -17,4 +17,10 @@ describe Van do
       end
     end
   end
+
+  describe '#deliver_bikes' do
+    it 'recognises this message' do
+      expect(van).to respond_to(:deliver_bikes).with(1).argument
+    end
+  end
 end
