@@ -7,7 +7,7 @@ describe DockingStation do
   let(:docking_station) { described_class.new }
   let(:larger_docking_station) { described_class.new(LARGER_CAPACITY) }
   let(:bike) { double("bike", broken: false, broken?: false) }
-  let(:broken_bike) { double("broken bike", report_broken: true, broken: true) }
+  let(:broken_bike) { double("broken bike", report_broken: true, broken: true, broken?: true) }
 
   describe '#initialize' do
     context 'when no capacity is given' do
@@ -35,10 +35,19 @@ describe DockingStation do
         released_bike = docking_station.release_bike
         expect(released_bike).to_not be_broken
       end
-      it 'does not release a broken bike' do
-        docking_station.bikes.clear
-        docking_station.dock(broken_bike)
-        expect { docking_station.release_bike }.to raise_error(RuntimeError, "Sorry, all bikes are broken.")
+      context 'when all bikes are broken' do
+        it 'does not release a broken bike' do
+          docking_station.bikes.clear
+          docking_station.dock(broken_bike)
+          expect { docking_station.release_bike }.to raise_error(RuntimeError, "Sorry, all bikes are broken.")
+        end
+      end
+      context 'when not all bikes are broken' do
+        it 'does not release a broken bike' do
+          docking_station.dock(broken_bike)
+          released_bike = docking_station.release_bike
+          expect(released_bike).to_not be_broken
+        end
       end
     end
     context 'when empty' do

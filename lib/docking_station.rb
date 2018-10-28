@@ -10,7 +10,8 @@ class DockingStation
   def release_bike
     raise "This docking station is empty." if empty?
     raise "Sorry, all bikes are broken." if bikes_broken?
-    bikes.pop
+    i = bikes.index { |bike| bike.broken == false }
+    bikes.delete_at(i)
   end
 
   def dock(bike)
