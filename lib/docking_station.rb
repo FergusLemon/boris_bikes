@@ -19,7 +19,7 @@ class DockingStation
   end
 
   def handover_bikes
-
+    bikes.select { |bike| bike.broken  }
   end
 
   private

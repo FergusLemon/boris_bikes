@@ -76,5 +76,9 @@ describe DockingStation do
     it 'recognises this message' do
       expect(docking_station).to respond_to(:handover_bikes)
     end
+    it 'hands over broken bikes to be fixed' do
+      docking_station.dock(broken_bike)
+      expect(docking_station.handover_bikes).to eq([broken_bike])
+    end
   end
 end
