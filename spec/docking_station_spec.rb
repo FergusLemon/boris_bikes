@@ -36,8 +36,9 @@ describe DockingStation do
         expect(released_bike).to_not be_broken
       end
       it 'does not release a broken bike' do
+        docking_station.bikes.clear
         docking_station.dock(broken_bike)
-        expect { docking_station.release_bike }.to raise_error(RuntimeError, "This bike is broken.")
+        expect { docking_station.release_bike }.to raise_error(RuntimeError, "Sorry, all bikes are broken.")
       end
     end
     context 'when empty' do

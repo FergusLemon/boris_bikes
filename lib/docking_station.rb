@@ -9,7 +9,7 @@ class DockingStation
 
   def release_bike
     raise "This docking station is empty." if empty?
-    raise "This bike is broken." if bike_broken?
+    raise "Sorry, all bikes are broken." if bikes_broken?
     bikes.pop
   end
 
@@ -39,7 +39,7 @@ class DockingStation
     bikes.empty?
   end
 
-  def bike_broken?
-    bikes.last.broken
+  def bikes_broken?
+    bikes.all? { |bike| bike.broken == true }
   end
 end
