@@ -34,7 +34,7 @@ shared_examples_for BikeContainer do
       end
       it 'does not accept bikes when full' do
         described_class::DEFAULT_CAPACITY.times { bike_container.add_bike(bike) }
-        expect { bike_container.add_bike(bike) }.to raise_error(RuntimeError, "This BikeContainerTest is full.")
+        expect { bike_container.add_bike(bike) }.to raise_error(RuntimeError, "This #{described_class} is full.")
       end
     end
     context 'when a user defined capacity is used' do

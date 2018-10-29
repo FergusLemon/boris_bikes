@@ -1,14 +1,8 @@
 class Garage
-attr_reader :bikes, :capacity
-DEFAULT_CAPACITY = 60
-
-  def initialize(capacity = DEFAULT_CAPACITY)
-    @bikes = []
-    @capacity = capacity
-  end
+include BikeContainer
 
   def dock(delivery)
-    bikes << delivery
+    add_bike(delivery)
   end
 
   def handover_bikes

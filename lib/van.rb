@@ -1,15 +1,9 @@
 class Van
-attr_reader :bikes, :capacity
-DEFAULT_CAPACITY = 20
-
-  def initialize(capacity = DEFAULT_CAPACITY)
-    @bikes = []
-    @capacity = capacity
-  end
+include BikeContainer
 
   def collect_bikes(location)
     collected_bikes = location.handover_bikes
-    collected_bikes.each { |bike| bikes << bike }
+    collected_bikes.each { |bike| add_bike(bike) }
   end
 
   def deliver_bikes(location)

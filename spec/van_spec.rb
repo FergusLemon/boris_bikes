@@ -6,6 +6,7 @@ describe Van do
   let(:docking_station) { double("docking station", handover_bikes: [broken_bike]) }
   let(:garage) { double("garage", dock: broken_bike) }
 
+  it_behaves_like BikeContainer
 
   describe '#initialize' do
     context 'when no capacity is given' do

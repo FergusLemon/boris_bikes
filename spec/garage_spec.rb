@@ -5,6 +5,8 @@ describe Garage do
   let(:broken_bike) { double("broken bike", broken: true) }
   let(:bike) { double("bike", broken: false) }
 
+  it_behaves_like BikeContainer
+
   describe '#initialize' do
     context 'when no capacity is given' do
       it 'defaults to a capacity of twenty' do

@@ -8,6 +8,8 @@ describe DockingStation do
   let(:bike) { double("bike", broken: false, broken?: false) }
   let(:broken_bike) { double("broken bike", report_broken: true, broken: true, broken?: true) }
 
+  it_behaves_like BikeContainer
+
   describe '#initialize' do
     context 'when no capacity is given' do
       it 'defaults to a capacity of twenty' do
@@ -71,7 +73,7 @@ describe DockingStation do
         expect { described_class::DEFAULT_CAPACITY.times { docking_station.dock(bike) } }.not_to raise_error
       end
       it 'does not accept bikes when full' do
-        expect { LARGER_CAPACITY.times { docking_station.dock(bike) } }.to raise_error(RuntimeError, "This docking station is full.")
+        expect { LARGER_CAPACITY.times { docking_station.dock(bike) } }.to raise_error(RuntimeError, "This #{described_class} is full.")
       end
     end
     context 'when a user defined capacity is used' do
