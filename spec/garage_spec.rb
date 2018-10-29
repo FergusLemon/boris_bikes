@@ -38,11 +38,11 @@ describe Garage do
     it 'hands over fixed bikes to be distributed' do
       expect(garage.handover_bikes).to eq([bike])
     end
- #    context 'when a broken bike has been handed over' do
- #      it 'no longer has the broken bike docked' do
- #        docking_station.handover_bikes
- #        expect(docking_station.bikes).not_to include(broken_bike)
- #      end
- #    end
-   end
+    context 'when a fixed bike has been handed over' do
+      it 'no longer has the fixed bike' do
+        garage.handover_bikes
+        expect(garage.bikes).not_to include(bike)
+      end
+    end
+  end
 end
