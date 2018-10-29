@@ -17,4 +17,12 @@ describe Bike do
       end
     end
   end
+
+  describe '#fix' do
+    it 'fixes broken bikes' do
+      bike.report_broken
+      bike.fix
+      expect(bike).to_not be_broken
+    end
+  end
 end
