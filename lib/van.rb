@@ -10,5 +10,6 @@ attr_reader :bikes
   end
 
   def deliver_bikes(location)
+    location.receive_bikes(bikes.pop)
   end
 end
