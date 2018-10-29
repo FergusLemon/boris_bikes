@@ -8,4 +8,8 @@ attr_reader :bikes
   def receive_bikes(delivery)
     bikes << delivery
   end
+
+  def fix_bikes
+
+  end
 end

@@ -13,4 +13,10 @@ describe Garage do
       expect(garage.bikes).to include([broken_bike])
     end
   end
+
+  describe '#fix_bikes' do
+    it 'recognises this message' do
+      expect(garage).to respond_to(:fix_bikes)
+    end
+  end
 end
