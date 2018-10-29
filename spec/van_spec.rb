@@ -29,7 +29,7 @@ describe Van do
     context 'when there are bikes to collect' do
       it 'collects the bikes' do
         van.collect_bikes(docking_station)
-        expect(van.bikes).to eq([[broken_bike]])
+        expect(van.bikes).to eq([broken_bike])
       end
     end
   end

@@ -8,13 +8,12 @@ DEFAULT_CAPACITY = 20
   end
 
   def collect_bikes(location)
-    bikes << location.handover_bikes
+    collected_bikes = location.handover_bikes
+    collected_bikes.each { |bike| bikes << bike }
   end
 
   def deliver_bikes(location)
-    bikes.flatten.each do |bike|
-      location.dock(bike)
-    end
+    bikes.each { |bike| location.dock(bike) }
     bikes.clear
   end
 end
