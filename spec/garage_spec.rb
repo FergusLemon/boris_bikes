@@ -43,6 +43,10 @@ describe Garage do
         garage.handover_bikes
         expect(garage.bikes).not_to include(bike)
       end
+      it 'still has the broken bike' do
+        garage.handover_bikes
+        expect(garage.bikes).to include([broken_bike])
+      end
     end
   end
 end
