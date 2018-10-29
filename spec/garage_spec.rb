@@ -2,7 +2,8 @@ require 'garage'
 
 describe Garage do
   let(:garage) { described_class.new }
-  let(:broken_bike) { double("broken bike") }
+  let(:broken_bike) { double("broken bike", broken: true) }
+  let(:bike) { double("bike", broken: false) }
 
   describe '#receive_bikes' do
     it 'recognises this message' do
@@ -30,13 +31,13 @@ describe Garage do
     it 'recognises this message' do
       expect(garage).to respond_to(:handover_bikes)
     end
- #    before(:each) do
- #      docking_station.dock(bike)
- #      docking_station.dock(broken_bike)
- #    end
- #    it 'hands over broken bikes to be fixed' do
- #      expect(docking_station.handover_bikes).to eq([broken_bike])
- #    end
+    before(:each) do
+      garage.receive_bikes([broken_bike])
+      garage.bikes << [bike]
+    end
+    it 'hands over fixed bikes to be distributed' do
+      expect(garage.handover_bikes).to eq([bike])
+    end
  #    context 'when a broken bike has been handed over' do
  #      it 'no longer has the broken bike docked' do
  #        docking_station.handover_bikes
