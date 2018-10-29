@@ -8,14 +8,11 @@ include BikeContainer
   end
 
   def handover_bikes
-     to_return = []
-     bikes.flatten.each do |bike|
-       if bike.broken == false
-         to_return << bike
-         bikes.delete(bike)
-       end
-     end
-     to_return
+     fixed_bikes = []
+     fix_bikes
+     bikes.each { |bike| fixed_bikes << bike }
+     bikes.clear
+     fixed_bikes
   end
 
   private

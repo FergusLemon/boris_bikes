@@ -12,8 +12,8 @@ describe Garage do
       expect(garage).to respond_to(:handover_bikes)
     end
     before(:each) do
-      garage.dock(broken_bike)
       garage.bikes << bike
+      allow(bike).to receive(:fix)
     end
     it 'hands over fixed bikes to be distributed' do
       expect(garage.handover_bikes).to eq([bike])
@@ -22,10 +22,6 @@ describe Garage do
       it 'no longer has the fixed bike' do
         garage.handover_bikes
         expect(garage.bikes).not_to include(bike)
-      end
-      it 'still has the broken bike' do
-        garage.handover_bikes
-        expect(garage.bikes).to include(broken_bike)
       end
     end
   end
