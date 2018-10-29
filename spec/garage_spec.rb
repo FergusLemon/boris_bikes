@@ -5,13 +5,13 @@ describe Garage do
   let(:broken_bike) { double("broken bike", broken: true) }
   let(:bike) { double("bike", broken: false) }
 
-  describe '#receive_bikes' do
+  describe '#dock' do
     it 'recognises this message' do
-      expect(garage).to respond_to(:receive_bikes).with(1).argument
+      expect(garage).to respond_to(:dock).with(1).argument
     end
     it 'accepts the bikes delivered' do
-      garage.receive_bikes([broken_bike])
-      expect(garage.bikes).to include([broken_bike])
+      garage.dock(broken_bike)
+      expect(garage.bikes).to include(broken_bike)
     end
   end
 
@@ -20,10 +20,10 @@ describe Garage do
       expect(garage).to respond_to(:fix_bikes)
     end
     it 'fixes any broken bikes' do
-      garage.receive_bikes([broken_bike])
+      garage.dock(broken_bike)
       allow(broken_bike).to receive(:broken=).with(false)
       garage.fix_bikes
-      expect(garage.bikes).to include([broken_bike])
+      expect(garage.bikes).to include(broken_bike)
     end
   end
 
@@ -32,8 +32,8 @@ describe Garage do
       expect(garage).to respond_to(:handover_bikes)
     end
     before(:each) do
-      garage.receive_bikes([broken_bike])
-      garage.bikes << [bike]
+      garage.dock(broken_bike)
+      garage.bikes << bike
     end
     it 'hands over fixed bikes to be distributed' do
       expect(garage.handover_bikes).to eq([bike])
@@ -45,7 +45,7 @@ describe Garage do
       end
       it 'still has the broken bike' do
         garage.handover_bikes
-        expect(garage.bikes).to include([broken_bike])
+        expect(garage.bikes).to include(broken_bike)
       end
     end
   end

@@ -5,7 +5,7 @@ attr_reader :bikes
     @bikes = []
   end
 
-  def receive_bikes(delivery)
+  def dock(delivery)
     bikes << delivery
   end
 

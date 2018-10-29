@@ -4,7 +4,7 @@ describe Van do
   let(:van) { described_class.new }
   let(:broken_bike) { double :bike }
   let(:docking_station) { double("docking station", handover_bikes: [broken_bike]) }
-  let(:garage) { double("garage", receive_bikes: [broken_bike]) }
+  let(:garage) { double("garage", dock: broken_bike) }
 
   describe '#collect_bikes' do
     it 'recognises this message' do
