@@ -2,7 +2,6 @@ require 'docking_station'
 require 'bike'
 
 describe DockingStation do
-  DEFAULT_CAPACITY = 20
   LARGER_CAPACITY = 25
   let(:docking_station) { described_class.new }
   let(:larger_docking_station) { described_class.new(LARGER_CAPACITY) }
@@ -12,7 +11,7 @@ describe DockingStation do
   describe '#initialize' do
     context 'when no capacity is given' do
       it 'defaults to a capacity of twenty' do
-        expect(docking_station.capacity).to eq(DEFAULT_CAPACITY)
+        expect(docking_station.capacity).to eq(described_class::DEFAULT_CAPACITY)
       end
     end
     context 'when a capacity is given' do
@@ -69,7 +68,7 @@ describe DockingStation do
     end
     context 'when default capacity is used' do
       it 'has a capacity of twenty' do
-        expect { DEFAULT_CAPACITY.times { docking_station.dock(bike) } }.not_to raise_error
+        expect { described_class::DEFAULT_CAPACITY.times { docking_station.dock(bike) } }.not_to raise_error
       end
       it 'does not accept bikes when full' do
         expect { LARGER_CAPACITY.times { docking_station.dock(bike) } }.to raise_error(RuntimeError, "This docking station is full.")
