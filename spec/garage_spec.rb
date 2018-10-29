@@ -21,9 +21,8 @@ describe Garage do
     end
     it 'fixes any broken bikes' do
       garage.dock(broken_bike)
-      allow(broken_bike).to receive(:broken=).with(false)
+      expect(broken_bike).to receive(:fix)
       garage.fix_bikes
-      expect(garage.bikes).to include(broken_bike)
     end
   end
 

@@ -10,7 +10,7 @@ attr_reader :bikes
   end
 
   def fix_bikes
-    bikes.flatten.map! { |bike| bike.broken = false }
+    bikes.flatten.map! { |bike| bike.fix }
   end
 
   def handover_bikes
