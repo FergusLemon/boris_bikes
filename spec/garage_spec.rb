@@ -25,4 +25,23 @@ describe Garage do
       expect(garage.bikes).to include([broken_bike])
     end
   end
+
+  describe '#handover_bikes' do
+    it 'recognises this message' do
+      expect(garage).to respond_to(:handover_bikes)
+    end
+ #    before(:each) do
+ #      docking_station.dock(bike)
+ #      docking_station.dock(broken_bike)
+ #    end
+ #    it 'hands over broken bikes to be fixed' do
+ #      expect(docking_station.handover_bikes).to eq([broken_bike])
+ #    end
+ #    context 'when a broken bike has been handed over' do
+ #      it 'no longer has the broken bike docked' do
+ #        docking_station.handover_bikes
+ #        expect(docking_station.bikes).not_to include(broken_bike)
+ #      end
+ #    end
+   end
 end
