@@ -10,7 +10,6 @@ attr_reader :bikes
   end
 
   def deliver_bikes(location)
-    #location.receive_bikes(bikes.pop)
     bikes.flatten.each do |bike|
       location.dock(bike)
     end
