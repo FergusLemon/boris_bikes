@@ -11,10 +11,6 @@ DEFAULT_CAPACITY = 60
     bikes << delivery
   end
 
-  def fix_bikes
-    bikes.flatten.map! { |bike| bike.fix }
-  end
-
   def handover_bikes
      to_return = []
      bikes.flatten.each do |bike|
@@ -24,5 +20,11 @@ DEFAULT_CAPACITY = 60
        end
      end
      to_return
+  end
+
+  private
+
+  def fix_bikes
+    bikes.flatten.map! { |bike| bike.fix }
   end
 end
