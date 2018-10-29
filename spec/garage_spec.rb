@@ -30,17 +30,6 @@ describe Garage do
     end
   end
 
-  describe '#fix_bikes' do
-    it 'recognises this message' do
-      expect(garage).to respond_to(:fix_bikes)
-    end
-    it 'fixes any broken bikes' do
-      garage.dock(broken_bike)
-      expect(broken_bike).to receive(:fix)
-      garage.fix_bikes
-    end
-  end
-
   describe '#handover_bikes' do
     it 'recognises this message' do
       expect(garage).to respond_to(:handover_bikes)
