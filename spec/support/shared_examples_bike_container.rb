@@ -2,6 +2,7 @@ require 'bike_container'
 shared_examples_for BikeContainer do
   let(:bike_container) { described_class.new }
   let(:bike) { double("bike", broken?: false) }
+  let(:tractor) { double("tractor") }
 
   describe '#initialize' do
     context 'when no capacity is given' do
@@ -21,6 +22,9 @@ shared_examples_for BikeContainer do
   describe '#add_bike' do
     it 'recognises this message' do
       expect(bike_container).to respond_to(:add_bike).with(1).argument
+    end
+    it 'only adds bikes' do
+      expect {  bike_container.add_bike(tractor) }.to raise_error(RuntimeError, "#{tractor.class} is not a Bike.")
     end
     context 'when one bike has been added' do
       it 'contains the bike' do

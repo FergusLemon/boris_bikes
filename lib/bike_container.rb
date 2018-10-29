@@ -10,6 +10,7 @@ DEFAULT_CAPACITY = 20
   end
 
   def add_bike(bike)
+    raise "#{bike.class} is not a Bike." if not_a_bike?(bike)
     raise "This #{self.class} is full." if full?
     bikes << bike
   end
@@ -18,5 +19,9 @@ DEFAULT_CAPACITY = 20
 
   def full?
     bikes.size == capacity
+  end
+
+  def not_a_bike?(bike)
+    true unless bike.respond_to?(:broken?)
   end
 end
