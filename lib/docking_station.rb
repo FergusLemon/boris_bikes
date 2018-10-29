@@ -1,5 +1,7 @@
+require_relative 'bike_container'
+
 class DockingStation
-  include BikeContainer
+include BikeContainer
 
   def release_bike
     raise "This docking station is empty." if empty?
