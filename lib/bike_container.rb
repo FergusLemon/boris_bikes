@@ -1,3 +1,5 @@
+require_relative 'bike'
+
 module BikeContainer
 attr_reader :capacity, :bikes
 DEFAULT_CAPACITY = 20

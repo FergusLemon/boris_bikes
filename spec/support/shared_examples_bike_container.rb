@@ -1,7 +1,7 @@
 require 'bike_container'
 shared_examples_for BikeContainer do
   let(:bike_container) { described_class.new }
-  let(:bike) { double("bike") }
+  let(:bike) { double("bike", broken?: false) }
 
   describe '#initialize' do
     context 'when no capacity is given' do

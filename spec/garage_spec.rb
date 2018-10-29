@@ -2,8 +2,8 @@ require 'garage'
 
 describe Garage do
   let(:garage) { described_class.new }
-  let(:broken_bike) { double("broken bike", broken: true) }
-  let(:bike) { double("bike", broken: false) }
+  let(:broken_bike) { double("broken bike", broken: true, broken?: true) }
+  let(:bike) { double("bike", broken: false, broken?: false) }
 
   it_behaves_like BikeContainer
 

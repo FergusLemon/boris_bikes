@@ -2,7 +2,7 @@ require 'van'
 
 describe Van do
   let(:van) { described_class.new }
-  let(:broken_bike) { double :bike }
+  let(:broken_bike) { double("broken bike", broken?: true) }
   let(:docking_station) { double("docking station", handover_bikes: [broken_bike]) }
   let(:garage) { double("garage", dock: broken_bike) }
 
