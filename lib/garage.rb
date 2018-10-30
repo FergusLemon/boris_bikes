@@ -8,16 +8,23 @@ include BikeContainer
   end
 
   def handover_bikes
-     fixed_bikes = []
      fix_bikes
-     bikes.each { |bike| fixed_bikes << bike }
-     bikes.clear
+     fixed_bikes = select_fixed_bikes
+     remove_fixed_bikes
      fixed_bikes
   end
 
   private
 
   def fix_bikes
-    bikes.flatten.map! { |bike| bike.fix }
+    bikes.each { |bike| bike.fix }
+  end
+
+  def select_fixed_bikes
+    bikes.select { |bike| bike.broken == false }
+  end
+
+  def remove_fixed_bikes
+    bikes.delete_if { |bike| bike.broken == false }
   end
 end
