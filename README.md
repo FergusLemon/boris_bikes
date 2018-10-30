@@ -80,3 +80,7 @@ Pick up the fixed bike from the garage and drop it back off at the docking stati
 >> docking_station
 #<DockingStation:0x007fb5318d68d0 @capacity=20, @bikes=[#<Bike:0x007fb5308f0a60 @broken=false>]>
 ```
+### License
+MIT (c) 2018 Fergus Lemon
+
+See `license.txt` for more detail.
