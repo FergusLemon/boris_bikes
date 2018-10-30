@@ -30,3 +30,27 @@ Instantiate a Bike and a DockingStation and #dock the bike at the docking_statio
 >> docking_station
 #<DockingStation:0x007fb5318d68d0 @capacity=20, @bikes=[#<Bike:0x007fb5308f0a60 @broken=false>]>
 ```
+User reports that the bike is broken and an error is raised if a user tries to release it from the docking_station:
+```
+>> bike.report_broken
+true
+>> docking_station
+#<DockingStation:0x007fb5318d68d0 @capacity=20, @bikes=[#<Bike:0x007fb5308f0a60 @broken=true>]>
+>> docking_station.release_bike
+RuntimeError: Sorry, all bikes are broken.
+```
+Instantiate a Van and collect the bike from the docking_station for repair:
+```
+>> van = Van.new
+#<Van:0x007fb5311df9f0 @capacity=20, @bikes=[]>
+>> van.collect_bikes(docking_station)
+[
+    [0] #<Bike:0x007fb5308f0a60 @broken=true>
+]
+>> van
+#<Van:0x007fb5311df9f0 @capacity=20, @bikes=[#<Bike:0x007fb5308f0a60 @broken=true>]>
+>> docking_station
+#<DockingStation:0x007fb5318d68d0 @capacity=20, @bikes=[]>
+```
+
+
