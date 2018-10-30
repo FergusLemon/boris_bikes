@@ -14,6 +14,19 @@ and garages, garages fix bikes. Vans, docking stations and garages all have a li
 - [ ] Step 6 - You can now instantiate objects of classes Bike, Garage, Van and DockingStation and send them messages to invoke behaviour. The file `feature_spec.rb` lists user stories and exhibits much of the program's functionality.
 To see this run `ruby spec/feature_spec.rb` from the command line when the working directory is the `boris_bikes` directory.
 
-## Code Example
+### Code Example
+In these code examples `>>` represents the command line prompt.  Lines without the prompt show the return value of the preceeding expression.
 
-
+Instantiate a Bike and a DockingStation and #dock the bike at the docking_station:
+```
+>> bike = Bike.new
+#<Bike:0x007fb5308f0a60 @broken=false>
+>> docking_station = DockingStation.new
+#<DockingStation:0x007fb5318d68d0 @capacity=20, @bikes=[]>
+>> docking_station.dock(bike)
+[
+    [0] #<Bike:0x007fb5308f0a60 @broken=false>
+]
+>> docking_station
+#<DockingStation:0x007fb5318d68d0 @capacity=20, @bikes=[#<Bike:0x007fb5308f0a60 @broken=false>]>
+```
