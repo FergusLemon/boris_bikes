@@ -17,7 +17,7 @@ To see this run `ruby spec/feature_spec.rb` from the command line when the worki
 ### Code Example
 In these code examples `>>` represents the command line prompt.  Lines without the prompt show the return value of the preceeding expression.
 
-Instantiate a Bike and a DockingStation and #dock the bike at the docking_station:
+Instantiate a Bike and a DockingStation and dock the bike at the docking station:
 ```
 >> bike = Bike.new
 #<Bike:0x007fb5308f0a60 @broken=false>
@@ -30,7 +30,7 @@ Instantiate a Bike and a DockingStation and #dock the bike at the docking_statio
 >> docking_station
 #<DockingStation:0x007fb5318d68d0 @capacity=20, @bikes=[#<Bike:0x007fb5308f0a60 @broken=false>]>
 ```
-User reports that the bike is broken and an error is raised if a user tries to release it from the docking_station:
+User reports that the bike is broken and an error is raised if a user tries to release it from the docking station:
 ```
 >> bike.report_broken
 true
@@ -52,5 +52,31 @@ Instantiate a Van and collect the bike from the docking_station for repair:
 >> docking_station
 #<DockingStation:0x007fb5318d68d0 @capacity=20, @bikes=[]>
 ```
-
-
+Instantiate a Garage and deliver the bike to it:
+```
+>> garage = Garage.new
+#<Garage:0x007fb5310fee28 @capacity=20, @bikes=[]>
+>> van.deliver_bikes(garage)
+[]
+>> garage
+#<Garage:0x007fb5310fee28 @capacity=20, @bikes=[#<Bike:0x007fb5308f0a60 @broken=true>]>
+>> van
+#<Van:0x007fb5311df9f0 @capacity=20, @bikes=[]>
+```
+Pick up the fixed bike from the garage and drop it back off at the docking station:
+```
+>> van.collect_bikes(garage)
+[
+    [0] #<Bike:0x007fb5308f0a60 @broken=false>
+]
+>> van
+#<Van:0x007fb5311df9f0 @capacity=20, @bikes=[#<Bike:0x007fb5308f0a60 @broken=false>]>
+>> garage
+#<Garage:0x007fb5310fee28 @capacity=20, @bikes=[]>
+>> van.deliver_bikes(docking_station)
+[]
+>> van
+#<Van:0x007fb5311df9f0 @capacity=20, @bikes=[]>
+>> docking_station
+#<DockingStation:0x007fb5318d68d0 @capacity=20, @bikes=[#<Bike:0x007fb5308f0a60 @broken=false>]>
+```
