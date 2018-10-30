@@ -15,7 +15,7 @@ describe Van do
     context 'when there are bikes to collect' do
       it 'collects the bikes' do
         van.collect_bikes(docking_station)
-        expect(van.bikes).to eq([broken_bike])
+        expect(van).not_to be_empty
       end
     end
   end
@@ -28,7 +28,7 @@ describe Van do
       it 'delivers the bikes' do
         van.collect_bikes(docking_station)
         van.deliver_bikes(garage)
-        expect(van.bikes).to be_empty
+        expect(van).to be_empty
       end
     end
   end

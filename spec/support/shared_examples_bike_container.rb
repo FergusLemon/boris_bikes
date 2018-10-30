@@ -29,7 +29,7 @@ shared_examples_for BikeContainer do
     context 'when one bike has been added' do
       it 'contains the bike' do
         bike_container.add_bike(bike)
-        expect(bike_container.bikes).to include(bike)
+        expect(bike_container).not_to be_empty
       end
     end
     context 'when default capacity is used' do

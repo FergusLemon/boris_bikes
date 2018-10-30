@@ -23,7 +23,7 @@ describe DockingStation do
       end
       context 'when all bikes are broken' do
         it 'does not release a broken bike' do
-          docking_station.bikes.clear
+          docking_station.release_bike
           docking_station.dock(broken_bike)
           expect { docking_station.release_bike }.to raise_error(RuntimeError, "Sorry, all bikes are broken.")
         end
@@ -48,7 +48,6 @@ describe DockingStation do
       expect(docking_station).to respond_to(:handover_bikes)
     end
     before(:each) do
-      docking_station.dock(bike)
       docking_station.dock(broken_bike)
     end
     it 'hands over broken bikes to be fixed' do
@@ -57,7 +56,7 @@ describe DockingStation do
     context 'when a broken bike has been handed over' do
       it 'no longer has the broken bike docked' do
         docking_station.handover_bikes
-        expect(docking_station.bikes).not_to include(broken_bike)
+        expect(docking_station).to be_empty
       end
     end
   end

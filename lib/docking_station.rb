@@ -26,10 +26,6 @@ include BikeContainer
 
   private
 
-  def empty?
-    bikes.empty?
-  end
-
   def bikes_broken?
     bikes.all? { |bike| bike.broken == true }
   end

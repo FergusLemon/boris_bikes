@@ -1,7 +1,7 @@
 require_relative 'bike'
 
 module BikeContainer
-attr_reader :capacity, :bikes
+attr_reader :capacity
 DEFAULT_CAPACITY = 20
 
   def initialize(capacity = DEFAULT_CAPACITY)
@@ -15,7 +15,12 @@ DEFAULT_CAPACITY = 20
     bikes << bike
   end
 
+  def empty?
+    bikes.empty?
+  end
+
   private
+  attr_reader :bikes
 
   def full?
     bikes.size == capacity
