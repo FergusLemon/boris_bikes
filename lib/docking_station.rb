@@ -14,14 +14,9 @@ include BikeContainer
   end
 
   def handover_bikes
-    to_return = []
-    bikes.each do |bike|
-      if bike.broken == true
-        to_return << bike
-        bikes.delete(bike)
-      end
-    end
-    to_return
+    broken_bikes = select_broken_bikes
+    remove_broken_bikes
+    broken_bikes
   end
 
   private
@@ -32,5 +27,13 @@ include BikeContainer
 
   def working_bike_location
     bikes.index { |bike| bike.broken == false }
+  end
+
+  def select_broken_bikes
+    bikes.select { |bike| bike.broken == true }
+  end
+
+  def remove_broken_bikes
+    bikes.delete_if { |bike| bike.broken == true }
   end
 end
