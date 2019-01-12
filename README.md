@@ -1,5 +1,5 @@
 # Boris Bikes
-A program written in Ruby as part of the Makers Academy course (week 1).  The program attempts to implement the 'Boris Bike' system used in London.
+A command line program written in Ruby as part of the Makers Academy course (week 1).  The program attempts to implement the 'Boris Bike' system used in London.
 Users can get working bikes from docking stations and return the bikes (working or broken) to docking stations.  Users can also report that a bike is broken.
 Docking stations will accept all bikes, no matter what condition, but will only release working bikes to users. Vans collect and deliver bikes between docking stations
 and garages, garages fix bikes. Vans, docking stations and garages all have a limited capacity and only accept bikes. 
